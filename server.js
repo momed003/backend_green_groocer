@@ -1,21 +1,15 @@
-//todo entry point
-require('dotenv').config();
+import express from 'express';
+import router from './routes/Register.js';
+import loginRouter from './routes/Login.js';
 
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
 const app = express();
-const authRoutes = require('./routes/auth');
-
-//middleware
-app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
+app.use('/api', router);
+app.use('/api', loginRouter);
 
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server running ${process.env.PORT}`);
+const PORT = 3702 ;
+app.listen(PORT, () => {
+    console.log(`Servidor a correr na porta ${PORT}`);
 });
-
-
-app.use('/api',authRoutes);
