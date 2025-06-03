@@ -4,8 +4,6 @@ import { admin, db } from '../config/Connecion.js';
 export const createProduct=async(req,res)=>{
     const product=req.body;
 
-
-
     if (product.name==null || product.grossprice==null || product.quantity==null || product.category==null ) {
         return res.status(400).json({error:'Name, price and quantity are required'});
     }
@@ -16,12 +14,12 @@ export const createProduct=async(req,res)=>{
 
     try {
 
-        const categorySnapshot = await this.firestore
+       const categorySnapshot = await db
             .collection('categories')
             .where('name', '==', product.category)
             .get();
         if (categorySnapshot.empty) {
-            return res.status(400).json({error:'Category does not exist'});
+            return res.status(400).json({error: 'Category does not exist'});
         }
 
         const productRef=db.collection('products');
@@ -39,7 +37,8 @@ export const createProduct=async(req,res)=>{
             quantity: product.quantity,
             category: product.category,
             iva: product.iva,
-            price: product.grossprice*product.iva,
+            price: product.grossprice+(product.grossprice*product.iva),
+            photos: product.photos || [],
             expiry_date: product.expiry_date,
             updatedAt: admin.firestore.FieldValue.serverTimestamp(),
             createdAt: admin.firestore.FieldValue.serverTimestamp()
@@ -61,5 +60,4 @@ export const createProduct=async(req,res)=>{
 const router = express.Router();
 
 router.post('/create-product', createProduct);
-
 export default router;
