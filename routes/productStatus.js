@@ -1,7 +1,7 @@
-import express from 'express';
-import { admin, db } from '../config/Connecion.js';
+const express = require('express');
+const { admin, db } = require('../config/Connecion');
 
-export const createProductStatus=async(req,res)=>{
+ const createProductStatus=async(req,res)=>{
     const productStatus=req.body;
     if (productStatus.name==null) {
         return res.status(400).json({error:'Name is required'});
@@ -28,7 +28,7 @@ export const createProductStatus=async(req,res)=>{
     }
 };
 
-export const listStatus=async(req,res)=>{
+ const listStatus=async(req,res)=>{
     try {
         const snapshot=await db.collection('productStatus').get();
         const status=snapshot.docs.map(doc=>({
@@ -47,4 +47,4 @@ const router = express.Router();
 
 router.post('/create-order-status', createProductStatus);
 router.get('/list-order-status', listStatus);
-export default router;
+module.exports = router;

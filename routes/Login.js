@@ -1,9 +1,8 @@
-import express from 'express';
-import { admin, db } from '../config/Connecion.js';
+const express = require('express');
+const { db } = require('../config/Connecion');
+const router = express.Router()
 
-const router = express.Router();
-
-export const loginUser = async (req, res) => {
+ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -38,4 +37,4 @@ export const loginUser = async (req, res) => {
 
 router.post('/login', loginUser);
 
-export default router;
+module.exports = router;

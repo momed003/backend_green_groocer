@@ -1,7 +1,7 @@
-import express from 'express';
-import { admin, db } from '../config/Connecion.js';
+const express = require('express');
+const { admin, db } = require('../config/Connecion');
 
-export const createSupplier=async(req,res)=>{
+ const createSupplier=async(req,res)=>{
     const supplier=req.body;
 
     if (supplier.name==null||supplier.email==null||supplier.phone==null||supplier.nuit==null|| supplier.address==null || supplier.password==null) {
@@ -49,4 +49,4 @@ const router = express.Router();
 
 router.post('/create-supplier', createSupplier);
 
-export default router;
+module.exports = router;

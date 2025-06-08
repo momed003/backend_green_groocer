@@ -1,15 +1,17 @@
-import express from 'express';
-import router from './routes/Register.js';
-import loginRouter from './routes/Login.js';
-import createSupplier from './routes/supplier.js';
-import createCategory from './routes/category.js';
-import listCategory from './routes/ListCategory.js';
-import listProduct from './routes/ListProduct.js';
-import updateProduct from './routes/updateProduct.js';
-import createProduct from './routes/product.js';
-import createProductStatus from './routes/productStatus.js';
-import listStatus from "./routes/productStatus.js";
+const express = require('express');
 
+const router = require('./routes/Register');
+const loginRouter = require('./routes/Login');
+const createSupplier = require('./routes/supplier');
+const createCategory = require('./routes/category');
+const listCategory = require('./routes/ListCategory');
+const listProduct = require('./routes/ListProduct');
+const updateProduct = require('./routes/updateProduct');
+const createProduct = require('./routes/product');
+const createProductStatus = require('./routes/productStatus');
+const listStatus = require('./routes/productStatus');
+const orderItem = require('./routes/orderItem');
+const create_order = require('./routes/Order');
 
 const app = express();
 app.use(express.json());
@@ -24,8 +26,10 @@ app.use('/api', updateProduct);
 app.use('/api', createProduct);
 app.use('/api', createProductStatus);
 app.use('/api', listStatus);
+app.use('/api', orderItem);
+app.use('/api', create_order);
 
-const PORT = 3702 ;
+const PORT = 3702;
 app.listen(PORT, () => {
     console.log(`Servidor a correr na porta ${PORT}`);
 });
