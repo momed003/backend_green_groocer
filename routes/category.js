@@ -1,7 +1,7 @@
-import express from 'express';
-import { admin, db } from '../config/Connecion.js';
+const express = require('express');
+const { admin, db } = require('../config/Connecion');
 
-export const createCategory=async(req,res)=>{
+ const createCategory=async(req,res)=>{
     const category=req.body;
     if (category.name==null) {
         return res.status(400).json({error:'Name is required'});
@@ -34,4 +34,4 @@ export const createCategory=async(req,res)=>{
 const router = express.Router();
 router.post('/create-category', createCategory);
 
-export default router;
+module.exports = router;

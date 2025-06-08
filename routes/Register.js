@@ -1,10 +1,10 @@
-import express from 'express';
-import { admin, db } from '../config/Connecion.js';
+const express = require('express');
+const { admin, db } = require('../config/Connecion');
 
-export const registerUser = async (req, res) => {
+ const registerUser = async (req, res) => {
     const userData = req.body;
 
-    if (!userData.name || !userData.email || !userData.password) {
+    if (!userData.name || !userData.email || !userData.password || !userData.address) {
         return res.status(400).json({ error: 'All fields are required' });
     }
 
@@ -22,6 +22,7 @@ export const registerUser = async (req, res) => {
             password: userData.password,
             phone: userData.phone,
             nuit: userData.nuit,
+            adress: userData.adress,
             createdAt: admin.firestore.FieldValue.serverTimestamp()
         };
 
@@ -41,4 +42,4 @@ const router = express.Router();
 
 router.post('/register', registerUser);
 
-export default router;
+module.exports = router;

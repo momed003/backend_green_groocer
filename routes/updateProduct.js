@@ -1,7 +1,7 @@
-import express from 'express';
-import { admin, db } from '../config/Connecion.js';
+const express = require('express');
+const { admin, db } = require('../config/Connecion');
 
-export const updateProduct = async (req, res) => {
+ const updateProduct = async (req, res) => {
     const { name, category,  iva,...updateData } = req.body;
 
 
@@ -56,4 +56,4 @@ export const updateProduct = async (req, res) => {
 const router = express.Router();
 
 router.put('/update-product', updateProduct);
-export default router;
+module.exports = router;

@@ -1,7 +1,7 @@
-import express from 'express'
-import {db} from '../config/Connecion.js';
+const express = require('express');
+const { admin, db } = require('../config/Connecion');
 
-export const listProduct=async(req,res)=>{
+ const listProduct=async(req,res)=>{
 
     const snapshot=await db.collection('products').get();
 
@@ -23,4 +23,4 @@ const router = express.Router();
 
 router.get('/list-product', listProduct);
 
-export default router;
+module.exports = router;
