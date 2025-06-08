@@ -9,6 +9,8 @@ import updateProduct from './routes/updateProduct.js';
 import createProduct from './routes/product.js';
 import createProductStatus from './routes/productStatus.js';
 import listStatus from "./routes/productStatus.js";
+import orderItem from "./routes/orderItem.js";
+import create_order from "./routes/Order.js";
 
 
 const app = express();
@@ -24,6 +26,8 @@ app.use('/api', updateProduct);
 app.use('/api', createProduct);
 app.use('/api', createProductStatus);
 app.use('/api', listStatus);
+app.use('/api', orderItem);
+app.use('/api',create_order);
 
 const PORT = 3702 ;
 app.listen(PORT, () => {

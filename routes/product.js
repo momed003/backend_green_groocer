@@ -54,7 +54,6 @@ export const createProduct=async(req,res)=>{
         console.error('Error creating product:', e);
         return res.status(500).json({ error: 'Internal error! Server not avaiable' });
     }
-
 };
 
 const router = express.Router();

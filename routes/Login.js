@@ -1,6 +1,6 @@
-import express from 'express';
-import { admin, db } from '../config/Connecion.js';
-
+const express = require('express');
+//import { admin, db } from '../config/Connecion.js';
+const {db}=require('../config/Connecion.js');
 const router = express.Router();
 
 export const loginUser = async (req, res) => {
