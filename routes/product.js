@@ -1,7 +1,7 @@
-import express from 'express';
-import { admin, db } from '../config/Connecion.js';
+const express = require('express');
+const { admin, db } = require('../config/Connecion');
 
-export const createProduct=async(req,res)=>{
+ const createProduct=async(req,res)=>{
     const product=req.body;
 
     if (product.name==null || product.grossprice==null || product.quantity==null || product.category==null ) {
@@ -59,4 +59,4 @@ export const createProduct=async(req,res)=>{
 const router = express.Router();
 
 router.post('/create-product', createProduct);
-export default router;
+module.exports = router;
