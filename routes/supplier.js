@@ -4,7 +4,7 @@ const { admin, db } = require('../config/Connecion');
  const createSupplier=async(req,res)=>{
     const supplier=req.body;
 
-    if (supplier.name==null||supplier.email==null||supplier.phone==null||supplier.nuit==null|| supplier.address==null || supplier.password==null) {
+    if (supplier.name==null||supplier.email==null||supplier.phone==null||supplier.nuit==null|| supplier.adress==null || supplier.password==null) {
         return res.status(400).json({error:'All fields are required'});
     }
 
