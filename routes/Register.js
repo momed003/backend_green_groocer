@@ -4,7 +4,7 @@ const { admin, db } = require('../config/Connecion');
  const registerUser = async (req, res) => {
     const userData = req.body;
 
-    if (!userData.name || !userData.email || !userData.password || !userData.address) {
+    if (!userData.name || !userData.email || !userData.password || !userData.adress) {
         return res.status(400).json({ error: 'All fields are required' });
     }
 
