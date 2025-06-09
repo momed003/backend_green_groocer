@@ -12,6 +12,7 @@ const createProductStatus = require('./routes/productStatus');
 const listStatus = require('./routes/productStatus');
 const orderItem = require('./routes/orderItem');
 const create_order = require('./routes/Order');
+const loginSuplier=require('./routes/Login');
 
 const app = express();
 app.use(express.json());
@@ -28,6 +29,7 @@ app.use('/api', createProductStatus);
 app.use('/api', listStatus);
 app.use('/api', orderItem);
 app.use('/api', create_order);
+app.use('api',loginSuplier)
 
 const PORT = 3702;
 app.listen(PORT, () => {
