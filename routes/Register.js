@@ -29,12 +29,15 @@ const { admin, db } = require('../config/Connecion');
         const userDocRef = await db.collection('users').add(newUser);
 
         return res.status(201).json({
+            statusCode:200,
             message: 'User created successfully!',
             userId: userDocRef.id
         });
     } catch (error) {
         console.error('Error creating user:', error);
-        return res.status(500).json({ error: 'Internal error! Server not avaiable' });
+        return res.status(500).json({
+            statusCode:200,
+            error: 'Internal error! Server not avaiable' });
     }
 };
 
