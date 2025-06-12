@@ -32,7 +32,7 @@ const { admin, db } = require('../config/Connecion');
             password: supplier.password,
             phone: supplier.phone,
             nuit: supplier.nuit,
-            adress: supplier.address,
+            adress: supplier.adress,
             createdAt: admin.firestore.FieldValue.serverTimestamp()
         })
 
